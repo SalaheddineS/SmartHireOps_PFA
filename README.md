@@ -1,4 +1,4 @@
-# SmartHireOps: AI-Powered HR Recruitment Platform with DevOps/GitOps Integration 🌐
+# SmartHireOps: Microsoft Azure Cloud hosted AI-Powered HR Recruitment Platform with DevOps/GitOps Integration 🌐
 
 <div align="center">
   <img src="https://i.pinimg.com/originals/e7/78/2b/e7782b954b20ab768c74fc1dfd6f9377.gif" alt="SmartHireOps GIF" width="400"/>
