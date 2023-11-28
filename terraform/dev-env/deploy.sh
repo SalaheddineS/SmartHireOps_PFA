@@ -21,3 +21,4 @@ terraform apply -auto-approve
 
 cd ..
 ./get_argo_password.sh
+./configure_etc_hosts.sh
