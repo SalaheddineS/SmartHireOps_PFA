@@ -15,5 +15,5 @@ variable "project-url" {
 }
 
 variable "argo-target-branch" {
-  default = "dev"
+  default = "staging"
 }

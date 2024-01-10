@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-configmap
+  namespace: smart-hire-ops
+data:
+  SPRING_CLOUD_CONSUL_HOST: consul.smart-hire-ops.svc.cluster.local
+  SPRING_CLOUD_CONSUL_DISCOVERY_HOSTNAME: api-gateway.smart-hire-ops.svc.cluster.local

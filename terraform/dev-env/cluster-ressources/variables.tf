@@ -5,3 +5,4 @@ variable "smart-hire-ops-namespace" {
 variable "argocd-namespace" {
   default = "argocd"
 }
+

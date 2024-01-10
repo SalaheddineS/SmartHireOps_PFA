@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+  namespace: smart-hire-ops
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - gateway.com
+      secretName: urlbackendingresssecret
+  rules:
+  - host: gateway.com  
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: api-gateway
+            port:
+              number: 9999
