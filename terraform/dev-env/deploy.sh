@@ -1,18 +1,18 @@
 cd ./cluster-init
-rm -rf .terraform*
-rm terraform.tfstate
+rm -rf ./.terraform*
+rm ./terraform.tfstate
 terraform init 
 terraform apply -auto-approve
 
 cd ../cluster-ressources
-rm -rf .terraform*
-rm terraform.tfstate
+rm -rf ./.terraform*
+rm ./terraform.tfstate
 terraform init
 terraform apply -auto-approve
 
 cd ../cluster-dependant-ressources
-rm -rf .terraform*
-rm terraform.tfstate
+rm -rf ./.terraform*
+rm ./terraform.tfstate
 terraform init
 terraform apply -auto-approve
 
