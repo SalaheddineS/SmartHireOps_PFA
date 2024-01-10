@@ -12,20 +12,7 @@ resource "kubernetes_manifest" "selfsigned_cluster_issuer" {
     }
   }
 }
-resource "kubernetes_secret" "database-secret" {
-  metadata {
-    name = "database-secret"
-  }
 
-  data = {
-    "DATABASE-FULL-URL" = var.DATABASE-FULL-URL
-    "DATABASE-USERNAME" = var.DATABASE-USERNAME
-    "DATABASE-PASSWORD" = var.DATABASE-PASSWORD
-    "DATABASE-URL" = var.DATABASE-URL
-  }
-
-  type = "Opaque"
-}
 resource "helm_release" "kube-prom-stack" {
   name       = "kube-prom"
   namespace  = var.smart-hire-ops-namespace
