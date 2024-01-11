@@ -6,10 +6,15 @@ on:
       - webdev_features
       - ml_features
       - main
-      - dev
+      - staging
       - devops_features
     paths:
       - 'web-interfaces/**'
+  pull_request:
+      types: [opened]
+      branches:
+        - devops_features
+
 
 
 jobs:
