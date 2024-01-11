@@ -1,12 +1,12 @@
-name: Test pipeline
+name: Gateway pipeline
 
 on:
   pull_request:
     paths:
         - 'web-services/gateway-service/**' 
   push:
-    paths:
-        - 'web-services/gateway-service/**'
+   # paths:
+   #     - 'web-services/gateway-service/**'
 
 env:
   SERVICE_NAME: gateway-service
@@ -32,7 +32,7 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-
+    
       - name: Setup Java JDK
         uses: actions/setup-java@v4.0.0
         with:
@@ -44,8 +44,8 @@ jobs:
         run: cd ${{ env.APP_CONTEXT }} && mvn clean package
 
       - name: Set up QEMU
-        if: github.ref == ${{ env.STAGING_ENV }} || github.ref == ${{ env.PROD_ENV }}
-        uses: docker/setup-qemu-action@v3
+        if: github.ref == ${{ env.STAGING_ENV }} || github.ref == ${{ env.PROD_ENV }} 
+        uses: docker/setup-qemu-action@v3 
 
       - name: Setup Docker buildx
         if: github.ref == ${{ env.STAGING_ENV }} || github.ref == ${{ env.PROD_ENV }}
