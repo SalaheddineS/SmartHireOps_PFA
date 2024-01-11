@@ -2,8 +2,6 @@ name: Test pipeline
 
 on:
   pull_request:
-    branches:
-      -staging
   push:
     branches:
       - main
