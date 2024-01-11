@@ -12,7 +12,7 @@ on:
 env:
   SERVICE_NAME: gateway-service
   IMAGE_NAME: salaheddine122/
-  APP_CONTEXT: web-services/gateway-service/
+  APP_CONTEXT: web-services/gateway-service
   PROJECT_PATH: ./web-services/gateway-service
   STAGING_ENV: refs/heads/staging
   PROD_ENV: refs/heads/main
