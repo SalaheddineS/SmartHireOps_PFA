@@ -12,8 +12,7 @@ on:
 env:
   SERVICE_NAME: gateway-service
   IMAGE_NAME: salaheddine122/
-  APP_CONTEXT: web-services
-  SUBDIREC: gateway-service
+  APP_CONTEXT: web-services/gateway-service/
   PROJECT_PATH: ./web-services/gateway-service
   STAGING_ENV: refs/heads/staging
   PROD_ENV: refs/heads/main
@@ -39,13 +38,16 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
       - name: Maven clean package & test
-        run: cd ${{ env.APP_CONTEXT }}/${{ env.SUBDIREC }} && mvn clean package
+        run: cd ${{ env.APP_CONTEXT }} && mvn clean package
 
   build_and_push_docker_images:
     needs: explore_github_actions
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging'
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3 
 
@@ -58,10 +60,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push Docker images ${{ env.APP_CONTEXT }}:${{ env.SUBDIREC}}
+      - name: Build and push Docker images
         uses: docker/build-push-action@v5.1.0
         with:
           push: true
           tags: ${{ env.IMAGE_NAME }}${{ env.SERVICE_NAME }}:1.0.0
-          context: web-services/gateway-service/
-          
+          context: ${{ env.APP_CONTEXT }}
