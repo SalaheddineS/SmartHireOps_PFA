@@ -5,6 +5,7 @@ on:
     paths:
       - 'web-services/gateway-service/**' 
   push:
+    
 
 
 env:
