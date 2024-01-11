@@ -5,8 +5,9 @@ on:
     paths:
       - 'web-services/gateway-service/**' 
   push:
-    
-
+    branches:
+        - main
+        - staging
 
 env:
   SERVICE_NAME: gateway-service
