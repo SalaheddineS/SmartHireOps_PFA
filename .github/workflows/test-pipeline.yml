@@ -3,9 +3,7 @@ name: Test pipeline
 on:
   pull_request:
     branches:
-      - webdev_features
-      - ml_features
-      - devops_features
+      -staging
   push:
     branches:
       - main
