@@ -2,18 +2,14 @@ name: Test pipeline
 
 on:
   pull_request:
-  push:
     branches:
       - webdev_features
       - ml_features
+      - devops_features
+  push:
+    branches:
       - main
       - staging
-      - devops_features
-    
-  
-
-
-
 
 jobs:
   Explore-GitHub-Actions:
