@@ -63,5 +63,5 @@ jobs:
         with:
           push: true
           tags: ${{ env.IMAGE_NAME }}${{ env.SERVICE_NAME }}:1.0.0
-          context: /home/runner/work/SmartHireOps_PFA/SmartHireOps_PFA/web-services/gateway-service
+          context: ./web-services/gateway-service
           
