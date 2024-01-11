@@ -12,7 +12,8 @@ on:
 env:
   SERVICE_NAME: gateway-service
   IMAGE_NAME: salaheddine122/
-  APP_CONTEXT: web-services/gateway-service
+  APP_CONTEXT: web-services
+  SUBDIREC: gateway-service
   PROJECT_PATH: ./web-services/gateway-service
   STAGING_ENV: refs/heads/staging
   PROD_ENV: refs/heads/main
@@ -57,9 +58,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push Docker images
+      - name: Build and push Docker images ${{ env.APP_CONTEXT }}:${{ env.SUBDIREC}}
         uses: docker/build-push-action@v5.1.0
         with:
           push: true
           tags: ${{ env.IMAGE_NAME }}${{ env.SERVICE_NAME }}:1.0.0
-          context: ${{ env.APP_CONTEXT }}
+          context: ${{ env.APP_CONTEXT }}:${{ env.SUBDIREC}}
+          
