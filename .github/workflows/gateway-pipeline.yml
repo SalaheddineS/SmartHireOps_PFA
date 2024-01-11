@@ -39,7 +39,7 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
       - name: Maven clean package & test
-        run: cd ${{ env.APP_CONTEXT }} && mvn clean package
+        run: cd ${{ env.APP_CONTEXT }}/${{ env.SUBDIREC }} && mvn clean package
 
   build_and_push_docker_images:
     needs: explore_github_actions
