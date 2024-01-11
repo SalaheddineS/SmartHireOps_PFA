@@ -16,8 +16,6 @@ env:
   STAGING_ENV: refs/heads/staging
   PROD_ENV: refs/heads/main
 
-
-      
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -32,6 +30,9 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+    
+      - name: test 
+        run: echo ${{ github.ref }}  ${{ env.STAGING_ENV }}
     
       - name: Setup Java JDK
         uses: actions/setup-java@v4.0.0
