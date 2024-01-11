@@ -2,16 +2,14 @@ name: Test pipeline
 
 on:
   pull_request:
-  #push:
+  push:
+    branches:
+      - webdev_features
+      - ml_features
+      - main
+      - staging
+      - devops_features
     
-  #  branches:
-  #    - webdev_features
-  #    - ml_features
-  #    - main
-  #    - staging
-  #    - devops_features
-  #  paths:
-  #    - 'web-interfaces/**'
   
 
 
