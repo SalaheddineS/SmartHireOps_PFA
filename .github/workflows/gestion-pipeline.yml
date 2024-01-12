@@ -1,4 +1,4 @@
-name: Gateway pipeline
+name: Gestion pipeline
 
 on:
   pull_request:
