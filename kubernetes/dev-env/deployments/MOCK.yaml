@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orgchart
+  labels:
+    app: orgchart
+  annotations:
+    key1: value1  
+spec:
+  selector:
+    matchLabels:
+      app: orgchart
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/agent-inject-status: 'update'
+        vault.hashicorp.com/role: 'internal-app'
+        vault.hashicorp.com/agent-inject-secret-database-config.txt: 'internal/data/database/config'
+        vault.hashicorp.com/agent-inject-template-database-config.txt: |
+           {{- with secret "internal/data/database/config" -}}
+           export pg_url=postgresql://{{ .Data.data.username }}:{{ .Data.data.password }}@postgres:5432/wizard
+           {{- end -}}
+
+
+      labels:
+        app: orgchart
+    spec:
+      serviceAccountName: internal-app
+      containers:
+      - name: orgchart
+        image: jweissig/app:0.0.1
+        command: ['sh', '-c']
+        args: ['source /vault/secrets/database-config.txt && /app/web']
